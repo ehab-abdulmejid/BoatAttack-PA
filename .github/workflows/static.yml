@@ -23,20 +23,17 @@ concurrency:
 #steps.deployment.outputs.page_url
 jobs:
   # Single deploy job since we're just deploying
-  build:
-    runs-on: ubuntu-latest
-    steps:
-        - name: HTML Preview
-          id: html_preview
-          uses: pavi2410/html-preview-action@v2
-          with:
-            html_file: 'test.html'
   deploy:
     environment:
       name: github-pages
-      url: ${{ build.steps.html_preview.outputs.url }}
+      url: ${{ steps.html_preview.outputs.url }}
     runs-on: ubuntu-latest
     steps:
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
+        with:
+          html_file: 'test.html'
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
