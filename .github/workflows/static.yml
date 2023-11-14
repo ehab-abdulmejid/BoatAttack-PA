@@ -20,13 +20,13 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
+#steps.deployment.outputs.page_url
 jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.html_preview.outputs.url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
