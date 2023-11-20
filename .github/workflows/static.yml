@@ -46,18 +46,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name : Test 2021.3 (1)
-        run  : npm install upm-ci-utils@stable -g
-      - name : Test 2021.3 (2)
-        run  : unity-downloader-cli -u 2021.3 -c editor -c WebGL -c Android --path .Editor --wait
-      - name : Test 2021.3 (3)
-        run  : upm-ci package test -u .Editor --type package-tests --platform editmode
-      - name: Upload artifact for deployment job
+      - name: Unity stuff
+        uses: game-ci/unity-test-runner@v4
+        with:
+          unityVersion: 2021.3
+      - name: Upload artifcats
+        id: myTestStep
         uses: actions/upload-artifact@v3
+        if: always()
         with:
-          name: .tests
-          path: "upm-ci~/test-results/**/*"
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: .tests
+          name: Test results
+          path: ${{ steps.myTestStep.outputs.artifactsPath }}
