@@ -47,11 +47,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
       - name: Unity stuff
+        id: myTestStep
         uses: game-ci/unity-test-runner@v4
         with:
           unityVersion: 2021.3
-      - name: Upload artifcats
-        id: myTestStep
+      - name: Upload artifcats    
         uses: actions/upload-artifact@v3
         if: always()
         with:
