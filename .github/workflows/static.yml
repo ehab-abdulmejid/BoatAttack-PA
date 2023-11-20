@@ -47,7 +47,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
       - name : Test 2021.3 (1)
-        run  : npm install upm-ci-utils@stable -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+        run  : npm install upm-ci-utils@stable -g
       - name : Test 2021.3 (2)
         run  : unity-downloader-cli -u 2021.3 -c editor -c WebGL -c Android --path .Editor --wait
       - name : Test 2021.3 (3)
