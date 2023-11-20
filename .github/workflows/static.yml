@@ -46,3 +46,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+      - name : Test 2021.3
+        commands:
+          - npm install upm-ci-utils@stable -g --registry https://artifactory.prd.cds.internal.unity3d.com/artifactory/api/npm/upm-npm
+          - unity-downloader-cli -u 2021.3 -c editor -c WebGL -c Android --path .Editor --wait
+          - upm-ci package test -u .Editor --type package-tests --platform editmode
+        artifacts:
+          logs:
+            paths:
+              - "upm-ci~/test-results/**/*"
