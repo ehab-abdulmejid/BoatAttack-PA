@@ -46,13 +46,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+      - name: Unity - Request Activation File
+        uses: game-ci/unity-request-activation-file@v2.0.0
+
       - name: Unity stuff
         id: myTestStep
         uses: game-ci/unity-test-runner@v4
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           customImage: 'unityci/editor:2020.1.14f1-base-0'
       - name: Upload artifcats    
