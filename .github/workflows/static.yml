@@ -47,14 +47,16 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
       - name: Unity stuff
-        id: myTestStep
+        id: testRunner
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          customImage: 'unityci/editor:2020.1.14f1-base-0'
       - name: Expose as artifact
         uses: actions/upload-artifact@v2
         with:
-            path: ${{ steps.myTestStep.outputs.filePath }}        
+            path: ${{ steps.testRunner.outputs.artifactsPath }}   
    #   - name: Unity stuff
    #     id: myTestStep
    #     uses: game-ci/unity-test-runner@v4
