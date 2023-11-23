@@ -46,18 +46,27 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: Unity stuff
-        id: myTestStep
-        uses: game-ci/unity-test-runner@v4
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+      - name: Request manual activation file
+        id: getManualLicenseFile
+        uses: game-ci/unity-request-activation-file@v2
+      # Upload artifact (Unity_v20XX.X.XXXX.alf)
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v2
         with:
-          customImage: 'unityci/editor:2020.1.14f1-base-0'
-      - name: Upload artifcats    
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Test results
-          path: ${{ steps.myTestStep.outputs.artifactsPath }}
+            name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+            path: ${{ steps.getManualLicenseFile.outputs.filePath }}        
+   #   - name: Unity stuff
+   #     id: myTestStep
+   #     uses: game-ci/unity-test-runner@v4
+   #     env:
+   #       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+   #       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+   #       UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+   #     with:
+   #       customImage: 'unityci/editor:2020.1.14f1-base-0'
+   #   - name: Upload artifcats    
+   #     uses: actions/upload-artifact@v3
+   #     if: always()
+   #     with:
+   #       name: Test results
+   #       path: ${{ steps.myTestStep.outputs.artifactsPath }}
