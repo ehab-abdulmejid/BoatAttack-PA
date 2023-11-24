@@ -52,7 +52,6 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: Test results
           path: 'TestResults/TestDocs.html'
       - name: HTML Preview
         id: html_preview
@@ -66,7 +65,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
-          path: 'TestResults/TestDocs.html'
+          path: './TestResults'
       #- name: Deploy to GitHub Pages
       #  id: deployment
       #  uses: actions/deploy-pages@v2
