@@ -61,11 +61,15 @@ jobs:
           html_file: ${{ steps.testRunner.outputs.artifactsPath }}/TestDocs.html
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
+      #- name: Upload artifact
+      #  uses: actions/upload-pages-artifact@v2
+      #  with:
           # Upload entire repository
-          path: './TestResults'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      #    path: './TestResults'
+      #- name: Deploy to GitHub Pages
+      #  id: deployment
+      #  uses: actions/deploy-pages@v2
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: TestResults # The folder the action should deploy.
