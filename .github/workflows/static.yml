@@ -40,6 +40,7 @@ jobs:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          testMode: editmode
       - name: Upload artifcats    
         uses: actions/upload-artifact@v3
         if: always()
