@@ -47,23 +47,23 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
       - name: Unity stuff
-        id: myTestStep
-        uses: game-ci/unity-test-runner@v4
+        id: testRunner
+        uses: game-ci/unity-test-runner@v2
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         with:
-          customImage: 'unityci/editor:2020.1.14f1-base-0'
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload artifcats    
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Test results
-          path: ${{ steps.myTestStep.outputs.artifactsPath }}
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
       - name: Upload artifcats (2)
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Test results
-          path: '.'
+          path: './TestResults'
