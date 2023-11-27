@@ -54,7 +54,7 @@ jobs:
         with:
           path: 'TestResults/TestDocs.html'
       - name: Download Artifacts
-        uses: actions/download-artifact@3
+        uses: actions/download-artifact@v3
         with:
           name: Test results
           path: './TestResults'
