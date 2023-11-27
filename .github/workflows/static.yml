@@ -28,9 +28,7 @@ jobs:
       name: github-pages
       url: ${{ steps.html_preview.outputs.url }}
     runs-on: ubuntu-latest
-    permissions: 
-      - write-all
-      - read-all
+    permissions: write-all
     steps:
       - name: Checkout
         uses: actions/checkout@v3
