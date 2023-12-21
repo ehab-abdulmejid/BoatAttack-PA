@@ -42,12 +42,12 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: editmode
-    #  - name: Upload artifcats    
-    #    uses: actions/upload-artifact@v3
-    #    if: always()
-    #    with:
-    #      name: Test results
-    #      path: ${{ steps.testRunner.outputs.artifactsPath }}
+      - name: Upload artifcats    
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Test results
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         if: always()
@@ -76,11 +76,11 @@ jobs:
     #        echo "::warning title=Invalid file permissions automatically fixed::$line"
     #      done
 
-    #  - name: Upload artifact
-    #    uses: actions/upload-pages-artifact@v2
-    #    with:
+      - name: Upload artifact4
+        uses: actions/upload-pages-artifact@v2
+        with:
           # Upload entire repository
-    #      path: './TestResults'
+          path: './TestResults'
           
       - name: Deploy to GitHub Pages
         id: deployment
