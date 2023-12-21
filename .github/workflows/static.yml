@@ -55,11 +55,11 @@ jobs:
           name: Report Artifact
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-    #  - name: Download Artifacts
-    #    uses: actions/download-artifact@v3
-    #    with:
-    #      name: Test results
-    #      path: './TestResults'
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: Report Artifact
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
 
     #  - name: HTML Preview
     #    id: html_preview
