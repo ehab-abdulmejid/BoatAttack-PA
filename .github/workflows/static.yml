@@ -59,13 +59,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Report Artifact
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
+          path: './TestResults'
 
-    #  - name: HTML Preview
-    #    id: html_preview
-    #    uses: pavi2410/html-preview-action@v2
-    #    with:
-    #      html_file: 'TestResults/TestDocs.html'
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
+        with:
+          html_file: 'TestResults/TestDocs.html'
 
     #  - name: Setup Pages
     #    uses: actions/configure-pages@v3
@@ -82,9 +82,9 @@ jobs:
           # Upload entire repository
     #      path: './TestResults'
           
-   #   - name: Deploy to GitHub Pages
-   #     id: deployment
-   #     uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
       #- name: Deploy
       #  id: html_preview
       #  uses: JamesIves/github-pages-deploy-action@v4
