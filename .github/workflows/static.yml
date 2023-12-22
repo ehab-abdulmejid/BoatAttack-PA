@@ -26,7 +26,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.html_preview.outputs.url }}
+      url: '${{ steps.testRunner.outputs.artifactsPath }}/TestDocs.html'
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -66,10 +66,10 @@ jobs:
           chmod -c -R +rX "_site/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          name: 'github-pages'
+     # - name: Upload Pages artifact
+     #   uses: actions/upload-pages-artifact@v2
+     #   with:
+     #     name: 'github-pages'
 
       - name: HTML Preview
         id: html_preview
@@ -92,6 +92,6 @@ jobs:
           # Upload entire repository
     #      path: './TestResults'
           
-     # - name: Deploy to GitHub Pages
-     #   id: deployment
-     #   uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
