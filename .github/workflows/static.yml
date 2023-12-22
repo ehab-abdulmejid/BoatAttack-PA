@@ -61,6 +61,12 @@ jobs:
      #     name: Report Artifact
      #     path: './TestResults'
 
+      - name: Replace file in index.html
+        uses: bluwy/substitute-string-action@v1
+        with:
+          _input-file: 'TestResults/Doc.html'
+          _output-file: 'TestResults/TestDocs.html'
+
       - name: HTML Preview
         id: html_preview
         uses: pavi2410/html-preview-action@v2
