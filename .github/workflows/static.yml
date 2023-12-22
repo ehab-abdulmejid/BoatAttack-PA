@@ -88,9 +88,10 @@ jobs:
           # Upload entire repository
     #      path: './TestResults'
           
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+    #  - name: Deploy to GitHub Pages
+    #    id: deployment
+    #    uses: actions/deploy-pages@v2
+    
       #- name: Deploy
       #  id: html_preview
       #  uses: JamesIves/github-pages-deploy-action@v4
