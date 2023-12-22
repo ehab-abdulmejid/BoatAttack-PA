@@ -64,7 +64,7 @@ jobs:
       - name: Replace file in index.html
         uses: bluwy/substitute-string-action@v1
         with:
-          _input-file: 'TestResults/Doc.html'
+          _input-file: '${{ steps.testRunner.outputs.artifactsPath }}/Doc.html'
           _output-file: 'TestResults/TestDocs.html'
 
       - name: HTML Preview
@@ -91,7 +91,7 @@ jobs:
     #  - name: Deploy to GitHub Pages
     #    id: deployment
     #    uses: actions/deploy-pages@v2
-    
+
       #- name: Deploy
       #  id: html_preview
       #  uses: JamesIves/github-pages-deploy-action@v4
