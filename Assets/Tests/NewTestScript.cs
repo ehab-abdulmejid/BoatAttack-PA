@@ -35,7 +35,7 @@ public class NewTestScript
         sb.Append("</body>");
         sb.Append("</html>");
         
-        StreamWriter sw1 = new StreamWriter(@"TestResults/Doc.html");
+        StreamWriter sw1 = new StreamWriter(@"docs/index.html");
         
         sw1.Write(sb);
         sw1.Flush();
