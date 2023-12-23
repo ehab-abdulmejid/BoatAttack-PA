@@ -43,7 +43,7 @@ jobs:
     #    with:
     #      githubToken: ${{ secrets.GITHUB_TOKEN }}
     #      testMode: editmode
-    
+
     #  - name: Upload artifcats    
     #    uses: actions/upload-artifact@v3
     #    if: always()
@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '.'
+          path: './docs'
 
       - name: Deploy to GitHub Pages
         id: deployment
