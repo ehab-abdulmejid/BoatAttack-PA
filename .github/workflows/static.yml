@@ -49,11 +49,11 @@ jobs:
     #      name: Test results
     #      path: ${{ steps.testRunner.outputs.artifactsPath }}
 
-    #  - name: Upload artifacts
-    #    uses: actions/upload-artifact@v4
-    #    with:
-    #      name: github-pages
-    #      path: './docs'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: './docs'
 
      # - name: Download Artifacts
      #   uses: actions/download-artifact@v3
@@ -66,11 +66,6 @@ jobs:
           chmod -c -R +rX "_site/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
-      #- name: Upload Pages artifact
-      #  uses: actions/upload-pages-artifact@v2
-      #  with:
-      #    name: github-pages
-      #    path: './TestResults'
 
     #  - name: HTML Preview
     #    id: html_preview
@@ -87,11 +82,11 @@ jobs:
     #        echo "::warning title=Invalid file permissions automatically fixed::$line"
     #      done
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
+    #  - name: Upload artifact
+    #    uses: actions/upload-pages-artifact@v2
+    #    with:
           # Upload entire repository
-          path: './docs'
+    #      path: './docs'
           
       - name: Deploy to GitHub Pages
         id: deployment
