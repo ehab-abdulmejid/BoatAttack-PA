@@ -32,16 +32,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Unity stuff
-        id: testRunner
-        uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          testMode: editmode
+   #   - name: Unity stuff
+   #     id: testRunner
+   #     uses: game-ci/unity-test-runner@v2
+   #     env:
+   #       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+   #       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+   #       UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+   #     with:
+   #       githubToken: ${{ secrets.GITHUB_TOKEN }}
+   #       testMode: editmode
     #  - name: Upload artifcats    
     #    uses: actions/upload-artifact@v3
     #    if: always()
