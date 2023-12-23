@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: './TestResults/index.html'
+          path: './TestResults'
 
      # - name: Download Artifacts
      #   uses: actions/download-artifact@v3
